@@ -7,18 +7,23 @@ import { initialValues, validationSchema } from "./AddressForm.form";
 const addressCtrl = new Address();
 
 export function AddressForm(props) {
-    const { onClose } = props;
+    const { onClose, onReload, addressId, address } = props;
     const { user } = useAuth();
 
     const formik = useFormik({
-      initialValues: initialValues(),
+      initialValues: initialValues(address),
       validationSchema: validationSchema(),
       validateOnChange: false,
       onSubmit: async (formValue) => {
         try {
-          await addressCtrl.create(formValue, user.id);
-
+          if(addressId) {
+            await addressCtrl.update(formValue, addressId);
+          } else {
+            await addressCtrl.create(formValue, user.id);
+          }
+          
           formik.handleReset();
+          onReload();
           onClose();
         } catch (error) {
           console.error(error);
@@ -30,7 +35,7 @@ export function AddressForm(props) {
     <Form onSubmit={formik.handleSubmit}>
         <Form.Input 
           name='title' 
-          placeholder='Ingresa tu nueva dirección' 
+          placeholder='Título' 
           value={formik.values.title} 
           onChange={formik.handleChange} 
           error={formik.errors.title} 
