@@ -5,7 +5,7 @@ import { Menu } from '../Menu';
 import styles from './TopBar.module.scss';
 
 export function TopBar(props) {
-    const { isOpenearch } = props;
+    const { isOpenSearch } = props;
 
     return (
         <div className={styles.topBar}>
@@ -15,7 +15,7 @@ export function TopBar(props) {
                 </Link>
             </div>
             <div className={styles.center}>
-                <Menu isOpenearch={isOpenearch} />
+                <Menu isOpenearch={isOpenSearch} />
             </div>
             <div className={styles.right}>
                 <Account />
