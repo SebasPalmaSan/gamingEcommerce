@@ -16,6 +16,15 @@ export default function GameDetail(props) {
         <Separator height={50} />
 
         <Game.Info game={game.attributes} />
+
+        <Separator height={30} />
+
+        <Game.Media 
+          video={game.attributes.video} 
+          screenshots={game.attributes.screenshots.data}
+        />
+
+        <Separator height={50} />
     </BasicLayout>
     </>
   )
