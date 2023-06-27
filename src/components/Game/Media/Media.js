@@ -8,7 +8,7 @@ export function Media(props) {
 
   return (
     <Container>
-        <h2>Visuales</h2>
+        <h2>Galería</h2>
         <Separator height={30} />
         <Video video={video} />
         <Separator height={30} />
