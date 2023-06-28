@@ -9,7 +9,7 @@ const wishlistCtrl = new Wishlist();
 
 export function WishlistIcon(props) {
 
-    const { gameId, className } = props;
+    const { gameId, className, removeCallback } = props;
     const [hasWishList, setHasWishList] = useState(null);
     const { user } = useAuth();
 
@@ -34,6 +34,9 @@ export function WishlistIcon(props) {
       try {
         await wishlistCtrl.delete(hasWishList.id);
         setHasWishList(false);
+        if (removeCallback) {
+          removeCallback();
+        }
       } catch (error) {
         console.error(error);
       }

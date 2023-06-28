@@ -1,12 +1,18 @@
 import { useState, useEffect } from "react";
+import { size } from "lodash";
 import { Wishlist as  WishlistCtrl } from "@/api";
 import { useAuth } from "@/hooks";
+import { NoResult } from "@/components/Shared";
+import { GridGames } from "./GridGames";
 
 const wishlistCtrl = new WishlistCtrl();
 
 export function Wishlist() {
     const [wishlist, setWishlist] = useState(null);
+    const [reload, setReload] = useState(false);
     const { user } = useAuth();
+
+    const onReload = () => setReload((prevState) => !prevState);
 
     useEffect(() => {
         (async () => {
@@ -17,11 +23,11 @@ export function Wishlist() {
                 console.error(error);
             }
         })()
-    }, []);
+    }, [reload]);
 
-    return (
-    <div>
-        <h2>Lista de deseos</h2>
-    </div>
-  )
+    return size(wishlist) === 0 ? (
+        <NoResult text='No tienes ningún juego en la lista de deseos' />
+    ) : (
+        <GridGames wishlist={wishlist}  onReload={onReload} />
+    )
 }
