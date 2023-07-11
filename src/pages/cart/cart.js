@@ -33,8 +33,8 @@ useEffect(() => {
   return (
     <>
         <CartLayout>
-            {currentStep === 1 && <Cart.StepOne games={games}/>}
-            {currentStep === 2 && <p>Step TWO</p>}
+            {currentStep === 1 && <Cart.StepOne games={games} />}
+            {currentStep === 2 && <Cart.StepTwo games={games} />}
             {currentStep === 3 && <p>Step THREE</p>}
         </CartLayout>
     </>

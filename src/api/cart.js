@@ -37,4 +37,20 @@ export class Cart {
 
         return count;
     }
+
+    changeQuantity(gameId, quantity) {
+        const games = this.getAll();
+        const objectIndex = games.findIndex((game) => game.id === gameId);
+
+        games[objectIndex].quantity = quantity;
+
+        localStorage.setItem(ENV.CART, JSON.stringify(games));
+    }
+
+    delete(gameId) {
+        const games = this.getAll();
+        const updateGame = games.filter((game) => game.id !== gameId);
+
+        localStorage.setItem(ENV.CART, JSON.stringify(updateGame))
+    }
 }
