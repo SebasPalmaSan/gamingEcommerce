@@ -1,6 +1,8 @@
 import { useState } from 'react';
 import { Separator } from '@/components/Shared';
 import { Addresses } from './Addresses';
+import { Payment } from './Payment';
+import { Resume } from './Resume';
 import styles from './StepTwo.module.scss';
 
 export function StepTwo(props) {
@@ -15,12 +17,12 @@ export function StepTwo(props) {
                 setAddressSelected={setAddressSelected}
             />
             <Separator height={50} />
-            {addressSelected && <p>Métodos de pago</p>}
+            {addressSelected && <Payment />}
             
         </div>
 
         <div className={styles.right}>
-            <p>Resúmen</p>
+            <Resume games={games} addressSelected={addressSelected} />
         </div>
     </div>
   )
