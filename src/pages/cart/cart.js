@@ -4,6 +4,7 @@ import { Game } from "@/api";
 import { CartLayout } from "@/layouts"
 import { useCart } from "@/hooks";
 import { Cart } from "@/components/Cart";
+import { Seo } from "@/components/Shared";
 
 const gameCtrl = new Game();
 
@@ -32,6 +33,8 @@ useEffect(() => {
 
   return (
     <>
+    <Seo title='Mi carrito' />
+    
         <CartLayout>
             {currentStep === 1 && <Cart.StepOne games={games} />}
             {currentStep === 2 && <Cart.StepTwo games={games} />}

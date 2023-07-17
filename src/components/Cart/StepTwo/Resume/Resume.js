@@ -14,6 +14,7 @@ export function Resume(props) {
     const [total, setTotal] = useState(null);
     const [loading, setLoading] = useState(false);
     const { user } = useAuth();
+    const { deleteAllItems } = useCart();
     const router = useRouter();
 
     useEffect(() => {
@@ -33,6 +34,7 @@ export function Resume(props) {
     const onPay = async () => {
         setLoading(true);
         goToStepThree();
+        deleteAllItems();
 
         setTimeout(() => {
             setLoading(false);

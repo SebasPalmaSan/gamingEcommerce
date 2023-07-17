@@ -53,4 +53,8 @@ export class Cart {
 
         localStorage.setItem(ENV.CART, JSON.stringify(updateGame))
     }
+
+    deleteAll() {
+        localStorage.removeItem(ENV.CART);
+    }
 }

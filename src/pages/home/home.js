@@ -1,7 +1,7 @@
 import { Container } from "semantic-ui-react";
 import { BasicLayout } from "@/layouts";
 import { Home } from "@/components/Home";
-import { Separator, BarTrust, BannerAd } from "@/components/Shared";
+import { Separator, BarTrust, BannerAd, Seo } from "@/components/Shared";
 
 const platformId = {
   playstation: 1,
@@ -13,6 +13,9 @@ const platformId = {
 export default function HomePage() {
   return (
     <>
+
+    <Seo />
+    
     <BasicLayout>
         <Home.BannerLastGamePublished />
 

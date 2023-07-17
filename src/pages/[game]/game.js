@@ -1,7 +1,7 @@
 import { BasicLayout } from '@/layouts'
 import { ENV } from '@/utils';
 import { Game } from '@/components/Game';
-import { Separator } from '@/components/Shared';
+import { Separator, Seo } from '@/components/Shared';
 
 export default function GameDetail(props) {
     const { game } = props;
@@ -9,6 +9,8 @@ export default function GameDetail(props) {
 
   return (
     <>
+    <Seo title={game.attributes.title}/>
+
     <BasicLayout>
         <Game.HeaderWallpaper image={`${ENV.SERVER_HOST}${wallpaper.data.attributes.url}`} />
         <Game.Panel gameId={game.id} game={game.attributes} />
